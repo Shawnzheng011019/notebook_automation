@@ -131,7 +131,7 @@ The script generates a Markdown report (`test_report_YYYYMMDD.md`) in the `repor
    - **Workaround**: Manually update `transformers` to the latest version using `pip install --upgrade transformers`.
 2. **Incomplete Cleanup Functionality**:
    - The script does not fully delete downloaded data files or model files.
-   - **Action Required**: Manually remove 残留文件 (residual files) in the `bootcamp/` directory after execution.
+   - **Action Required**: Manually remove residual files in the `bootcamp/` directory after execution.
 3. **PyArrow Environment Instability**:
    - `pyarrow` may fail to install or run correctly without proper system dependencies.
    - Prerequisite `CMake` is installed on your system before running the script.
