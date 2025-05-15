@@ -82,12 +82,59 @@ To run the script, simply execute it from the command line:
 python bootcamp.py
 ```
 
+## Test Report Example
+
+The script generates a Markdown report (`test_report_YYYYMMDD.md`) in the `reports/` directory. Below is an example of its structure and content:
+
+```markdown
+# Test Execution Report
+- Execution Date: 2025-05-15 14:30:45
+- Execution Time: 124.56 seconds
+- Total Number of Files: 5
+- Number of Successful Files: 3
+- Number of Failed Files: 2
+- Success Rate: 60.00%
+
+## Execution Result Statistics
+| Category                | Quantity | Proportion |
+|-------------------------|----------|------------|
+| Successful Files        | 3        | 60.00%     |
+| Host Dependency Failed Files | 1      | 20.00%     |
+| Python Failed Files     | 1        | 20.00%     |
+| Total                   | 5        | 100%       |
+
+## List of Successful Files
+| File                                  |
+|---------------------------------------|
+| bootcamp/tutorials/quickstart/rag.ipynb |
+| bootcamp/tutorials/quickstart/image_search.ipynb |
+| bootcamp/tutorials/quickstart/hybrid_search.ipynb |
+
+## List of Failed Files
+| File                                  | Error Type         | Error Message                                                                 |
+|---------------------------------------|--------------------|-----------------------------------------------------------------------------|
+| bootcamp/tutorials/quickstart/clustering.ipynb | Host Dependency    | CalledProcessError: Failed to execute command: conda run -n clustering_env bash clustering.sh (Permission denied) |
+| bootcamp/tutorials/quickstart/nlp.ipynb        | Python Error       | RuntimeError: Python script execution failed with return code: 1 (ModuleNotFoundError: No module named 'transformers') |
+```
+
 ## Error Handling
 
 - **Command Execution**: If any shell command fails during execution, the script logs the error and raises an appropriate exception.
 - **File Not Found**: If a required file (such as the converted Python file) is not found, the script logs the error and raises a `FileNotFoundError`.
 - **Runtime Errors**: If a runtime error occurs during script execution, the script logs the error, adds the file to the list of failed files, and continues with the next file.
 
-## Conclusion
+## Known Issues
 
-This script provides a comprehensive automation solution for processing Jupyter notebooks, from cloning the repository to generating a test report and cleaning up the temporary resources. It ensures that the execution process is logged and error-handled effectively.
+1. **HDBscan Import Error**:
+   *"cannot import name 'GenerationMixin' from 'transformers.generation'"*
+   - **Cause**: Incompatible version between `hdbscan` and `transformers`.
+   - **Workaround**: Manually update `transformers` to the latest version using `pip install --upgrade transformers`.
+2. **Incomplete Cleanup Functionality**:
+   - The script does not fully delete downloaded data files or model files.
+   - **Action Required**: Manually remove 残留文件 (residual files) in the `bootcamp/` directory after execution.
+3. **PyArrow Environment Instability**:
+   - `pyarrow` may fail to install or run correctly without proper system dependencies.
+   - Prerequisite `CMake` is installed on your system before running the script.
+     - For Ubuntu/Debian: `sudo apt-get install cmake`
+     - For macOS: `brew install cmake`
+     - For Windows: Install via [CMake official website](https://cmake.org/install/)
