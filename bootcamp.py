@@ -74,7 +74,7 @@ def setup_conda_env(env_name: str) -> None:
     if env_name not in env_exists.stdout:
         logging.info(f"Creating conda environment: {env_name}")
         print(f"Creating conda environment: {env_name}")
-        run_command(["conda", "create", "-n", env_name, "python=3.9", "-y"])
+        run_command(["conda", "create", "-n", env_name, "python=3.11", "-y"])
 
 def configure_environment() -> None:
     """Load environment variables from .env file"""
