@@ -1,4 +1,4 @@
-# Bootcamp Automation Script
+# Notebook Automation Script
 
 ## Overview
 
