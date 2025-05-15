@@ -125,14 +125,10 @@ The script generates a Markdown report (`test_report_YYYYMMDD.md`) in the `repor
 
 ## Known Issues
 
-1. **HDBscan Import Error**:
-   *"cannot import name 'GenerationMixin' from 'transformers.generation'"*
-   - **Cause**: Incompatible version between `hdbscan` and `transformers`.
-   - **Workaround**: Manually update `transformers` to the latest version using `pip install --upgrade transformers`.
-2. **Incomplete Cleanup Functionality**:
+1. **Incomplete Cleanup Functionality**:
    - The script does not fully delete downloaded data files or model files.
    - **Action Required**: Manually remove residual files in the `bootcamp/` directory after execution.
-3. **PyArrow Environment Instability**:
+2. **PyArrow Environment Instability**:
    - `pyarrow` may fail to install or run correctly without proper system dependencies.
    - Prerequisite `CMake` is installed on your system before running the script.
      - For Ubuntu/Debian: `sudo apt-get install cmake`
