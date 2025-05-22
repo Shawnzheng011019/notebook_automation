@@ -16,9 +16,9 @@ logging.basicConfig(filename=log_file, level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 # Configuration - Load from environment variables or default values
-REPO_URL = os.getenv("REPO_URL", "https://github.com/Shawnzheng011019/bootcamp.git")
-PROJECT_DIR = os.getenv("PROJECT_DIR", "bootcamp")
-NOTEBOOK_DIR = Path(os.getenv("NOTEBOOK_DIR", "bootcamp/bootcamp/tutorials/quickstart"))
+REPO_URL = os.getenv("REPO_URL", "")
+PROJECT_DIR = os.getenv("PROJECT_DIR", "")
+NOTEBOOK_DIR = Path(os.getenv("NOTEBOOK_DIR", ""))
 SCRIPT_DIR = Path(__file__).resolve().parent
 ENV_FILE = SCRIPT_DIR / ".env"
 IPYNB_CONVERTER = SCRIPT_DIR / "ipynb_converter.py"
